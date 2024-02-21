@@ -2,6 +2,39 @@
   text-align: center;
 }
 
+body{
+  background-color: black;
+}
+
+.signup{
+  border: 1px solid black;
+  margin: 18vh;
+  width: 70vh;
+  padding: 10vh;
+  margin-left: 65vh;
+}
+
+.todos{
+  border: 1px solid black;
+  padding: 8vh;
+  margin: 18vh;
+  background-color: #1a1d22;
+  width: 60vh;
+  position: relative;
+  left: 50vh;
+}
+
+.inpBox{
+  padding: 1vh;
+  width: 35vh;
+  text-align: center;
+}
+
+.labels{
+  font-weight: bold;
+  font-size: large;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
