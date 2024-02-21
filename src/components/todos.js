@@ -2,11 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import AddTodo from "./addTodo";
 
 export default function Todos() {
   const navigate = useNavigate();
   const { token, username } = useContext(UserContext);
   const [todos, setTodos] = useState([]);
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
 
   useEffect(() => {
     if (!token) {
@@ -110,6 +114,7 @@ export default function Todos() {
                   />{" "}
                   {item.text}
                 </h5>
+                <AddTodo show={show} close={handleClose} reload={fetchData}/>
               </div>
             ))}
           </>
@@ -117,7 +122,9 @@ export default function Todos() {
           <h4>Start adding todos</h4>
         )}
         <br />
-        <Button variant="outline-success">Add new Todo</Button>
+        <Button variant="outline-success" onClick={() => {
+          setShow(true)
+        }}>Add new Todo</Button>
       </div>
     </div>
   );
