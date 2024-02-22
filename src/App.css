@@ -14,6 +14,24 @@ body{
   margin-left: 65vh;
 }
 
+.deleteIcon{
+  width: 18px;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  left: 40vh;
+  bottom: 3vh;
+}
+
+.editIcon{
+  width: 18px;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  left: 45vh;
+  bottom: 5.5vh;
+}
+
 .todos{
   border: 1px solid black;
   padding: 8vh;
@@ -21,7 +39,11 @@ body{
   background-color: #1a1d22;
   width: 60vh;
   position: relative;
-  left: 50vh;
+  left: 45vh;
+}
+
+.error{
+  color: red;
 }
 
 .inpBox{

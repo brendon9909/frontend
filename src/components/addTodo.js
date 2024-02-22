@@ -1,10 +1,11 @@
 import { Button, Modal } from "react-bootstrap";
 import { useFormik } from "formik";
 import UserContext from "./UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function AddTodo(props) {
   const { username } = useContext(UserContext);
+  const [myError, setMyError] = useState(null)
   const formik = useFormik({
     initialValues: {
       task: "",
@@ -25,11 +26,25 @@ export default function AddTodo(props) {
         if(response.ok){
             props.close()
             props.reload()
+            setMyError(null)
+        }
+        else{
+          const responseData = await response.json()
+          setMyError(responseData.message)
         }
       } catch (error) {
         console.error('something went wrong', error)
       }
     },
+    validate: (values) => {
+      const errors = {}
+
+      if(!values.task){
+        errors.task = "required"
+      }
+
+      return errors
+    }
   });
 
   return (
@@ -45,7 +60,8 @@ export default function AddTodo(props) {
             name="task"
             value={formik.values.task}
             onChange={formik.handleChange}
-          />
+          />{formik.touched.task && formik.errors.task ? <div className="error">{formik.errors.task}</div>: null}
+          {myError ? <div className="error">{myError}</div>: null}
           <br />
           <Button type="submit" variant="primary">
             Add Task
