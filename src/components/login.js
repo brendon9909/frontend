@@ -4,18 +4,22 @@ import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "./UserContext";
 import { useContext } from "react";
 
+//login page
 export default function Login() {
+  //context for setting the token and username globally
   const { setToken, setUsername } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   const formik = useFormik({
+    //formik for form handling the login
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: async (values) => {
       try {
+        //make the login request
         const response = await fetch("http://localhost:8000/login", {
           method: "POST",
           headers: {
@@ -26,8 +30,11 @@ export default function Login() {
 
         if (response.ok) {
           const responseData = await response.json();
+          //set the username
           setUsername(responseData.user);
+          //set the token
           setToken(responseData.token);
+          //go to home page
           navigate("/home");
         }
       } catch (error) {
@@ -35,6 +42,7 @@ export default function Login() {
       }
     },
     validate: (values) => {
+      //formik error validating
       const errors = {};
 
       if (!values.username) {
