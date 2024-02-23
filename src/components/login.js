@@ -2,12 +2,14 @@ import { useFormik } from "formik";
 import { Button } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "./UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 //login page
 export default function Login() {
   //context for setting the token and username globally
   const { setToken, setUsername } = useContext(UserContext);
+  //state for storing error from backend
+  const [myError, setMyError] = useState(null)
 
   const navigate = useNavigate();
 
@@ -36,6 +38,13 @@ export default function Login() {
           setToken(responseData.token);
           //go to home page
           navigate("/home");
+          //clear error
+          setMyError(null)
+        }
+        else{
+          const responseData = await response.json()
+          //set the error
+          setMyError(responseData.message)
         }
       } catch (error) {
         console.error(error.message);
@@ -77,6 +86,7 @@ export default function Login() {
         {formik.touched.username && formik.errors.username ? (
           <div className="error">{formik.errors.username}</div>
         ) : null}
+        {myError ? <div className="error">{myError}</div>: null}
         <br />
         <br />
         <label className="labels" htmlFor="password">
