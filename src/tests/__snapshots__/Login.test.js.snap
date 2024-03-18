@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders correctly 1`] = `
+<div
+  className="signup"
+>
+  <h1>
+    Login
+  </h1>
+  <hr />
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="labels"
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <br />
+    <input
+      className="inpBox"
+      name="username"
+      onChange={[Function]}
+      placeholder="username"
+      type="text"
+      value=""
+    />
+    <br />
+    <br />
+    <label
+      className="labels"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <br />
+    <input
+      className="inpBox"
+      name="password"
+      onChange={[Function]}
+      placeholder="*******"
+      type="password"
+      value=""
+    />
+    <br />
+    <br />
+    <button
+      className="btn btn-success"
+      disabled={false}
+      style={
+        Object {
+          "width": "20vh",
+        }
+      }
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+  <p>
+    Don't have an account? Signup 
+    <a
+      aria-current="page"
+      className="active"
+      href="/"
+      onClick={[Function]}
+    >
+      here
+    </a>
+  </p>
+</div>
+`;

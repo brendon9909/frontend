@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todos render correctly 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "black",
+      "color": "white",
+      "padding": "51px",
+    }
+  }
+>
+  <h1
+    style={
+      Object {
+        "fontFamily": "Protest Guerrilla",
+      }
+    }
+  >
+    Todos
+  </h1>
+  <div
+    className="todos"
+  >
+    <h4>
+      Start adding todos
+    </h4>
+    <br />
+    <button
+      className="btn btn-outline-success"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Add new Todo
+    </button>
+  </div>
+</div>
+`;
